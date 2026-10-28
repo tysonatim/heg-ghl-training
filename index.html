@@ -282,6 +282,10 @@
       border-color: var(--cyan);
       box-shadow: 0 0 35px rgba(0, 102, 255, 0.22);
     }
+    .stop-section.section-spotlighted {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.35), 0 12px 40px rgba(245, 158, 11, 0.22);
+    }
     .stop-head {
       background: var(--surface-2);
       padding: 18px 24px;
@@ -481,9 +485,6 @@
       flex-wrap: wrap;
     }
     .spotlight-btn {
-      display: none;
-    }
-    body.is-presenter .spotlight-btn {
       display: inline-flex;
     }
 
@@ -730,9 +731,12 @@
           <h3>Submit Dummy Investor, Commercial Partner &amp; AI Chat Test on Your Website</h3>
           <span class="owner-pill">Live End-to-End Test</span>
         </div>
-        <a class="btn btn-ghl" href="https://horizonenergyglobal.com/investors/" target="_blank">
-          Open /investors/ Page ↗
-        </a>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-sm btn-amber" onclick="spotlightSection(1)">🔦 Spotlight Section</button>
+          <a class="btn btn-sm btn-ghl" href="https://horizonenergyglobal.com/investors/" target="_blank">
+            Open /investors/ Page ↗
+          </a>
+        </div>
       </div>
 
       <div class="coach-box">
@@ -914,6 +918,7 @@
           <span class="owner-pill">Marc Thomas &amp; Troy Carson</span>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-sm btn-amber" onclick="spotlightSection(2)">🔦 Spotlight Section</button>
           <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/payments/proposals-estimates/templates" target="_blank">
             Open NDA Template ↗
           </a>
@@ -1013,9 +1018,12 @@
           <h3>Work Your Test Investor in the Seed Raise ($20M) Pipeline</h3>
           <span class="owner-pill">Marc Thomas &amp; Troy Carson</span>
         </div>
-        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">
-          Open Seed Raise Pipeline ↗
-        </a>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-sm btn-amber" onclick="spotlightSection(3)">🔦 Spotlight Section</button>
+          <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">
+            Open Seed Raise Pipeline ↗
+          </a>
+        </div>
       </div>
 
       <div class="coach-box">
@@ -1115,9 +1123,12 @@
           <h3>Work Your Commercial Lead Across the 3 Pillar Pipelines (CCUS • Geo • UKCS)</h3>
           <span class="owner-pill">Marc, Jonathan, Stephen &amp; Graham</span>
         </div>
-        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">
-          Open Opportunities Board ↗
-        </a>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-sm btn-amber" onclick="spotlightSection(4)">🔦 Spotlight Section</button>
+          <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">
+            Open Opportunities Board ↗
+          </a>
+        </div>
       </div>
 
       <div class="coach-box">
@@ -1202,9 +1213,12 @@
           <h3>Verify Your Live Test Metrics on the Raise Command Center Dashboard</h3>
           <span class="owner-pill">Marc Thomas &amp; Troy Carson</span>
         </div>
-        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">
-          Open Raise Command Center ↗
-        </a>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-sm btn-amber" onclick="spotlightSection(5)">🔦 Spotlight Section</button>
+          <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">
+            Open Raise Command Center ↗
+          </a>
+        </div>
       </div>
 
       <div class="coach-box">
@@ -1274,6 +1288,7 @@
           <span class="owner-pill">Marc, Troy &amp; Executive Team</span>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-sm btn-amber" onclick="spotlightSection(6)">🔦 Spotlight Section</button>
           <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/contacts/smart_list/All" target="_blank">
             Open Smart Lists ↗
           </a>
@@ -1411,9 +1426,12 @@
           <h3>Clean Up Dummy Test Records, Connect Calendar &amp; Install Mobile App</h3>
           <span class="owner-pill">All Team Members</span>
         </div>
-        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/settings/profile" target="_blank">
-          Open My Profile Settings ↗
-        </a>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-sm btn-amber" onclick="spotlightSection(7)">🔦 Spotlight Section</button>
+          <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/settings/profile" target="_blank">
+            Open My Profile Settings ↗
+          </a>
+        </div>
       </div>
 
       <div class="coach-box">
@@ -1534,6 +1552,7 @@
       document.querySelectorAll('.stop-section').forEach(sec => {
         const s = parseInt(sec.getAttribute('data-stop'), 10);
         sec.classList.toggle('is-current-stop', s === localState.currentStop);
+        sec.classList.toggle('section-spotlighted', s === localState.spotlightSection);
       });
 
       const ind = document.getElementById('presenterStopIndicator');
@@ -1631,10 +1650,23 @@
       publishState(next);
     }
 
+    function spotlightSection(stopNum) {
+      const next = {
+        ...localState,
+        currentStop: stopNum,
+        spotlightSection: stopNum,
+        spotlightTarget: '',
+        scrollSeq: (localState.scrollSeq || 0) + 1,
+        updatedAt: Date.now()
+      };
+      publishState(next);
+    }
+
     function presenterSpotlight(stopNum, taskId) {
       const next = {
         ...localState,
         currentStop: stopNum,
+        spotlightSection: 0,
         spotlightTarget: taskId,
         spotlightSeq: (localState.spotlightSeq || 0) + 1,
         scrollSeq: (localState.scrollSeq || 0) + 1,
