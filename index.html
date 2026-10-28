@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horizon Energy Global — Hands-On GHL Interactive Walkthrough</title>
+  <style>
+    :root {
+      --bg: #080d1a;
+      --surface: #111a2e;
+      --surface-2: #17233d;
+      --border: #24355a;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --blue: #0066ff;
+      --cyan: #38bdf8;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --purple: #6366f1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding-bottom: 110px;
+    }
+
+    /* Sticky Top Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(8, 13, 26, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+      animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.75; }
+    }
+    .brand-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .brand-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Progress Bar in Header */
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      max-width: 420px;
+      min-width: 240px;
+    }
+    .progress-bar-bg {
+      flex: 1;
+      height: 10px;
+      background: var(--surface-2);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--blue), var(--emerald));
+      transition: width 0.35s ease;
+    }
+    .progress-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+
+    /* Presenter Remote Control Bar (Only visible when ?presenter=1) */
+    .presenter-bar {
+      display: none;
+      background: linear-gradient(90deg, #1e1b4b, #172554);
+      border-bottom: 2px solid var(--amber);
+      padding: 10px 24px;
+    }
+    body.is-presenter .presenter-bar {
+      display: block;
+    }
+    .presenter-bar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .presenter-badge {
+      background: var(--amber);
+      color: #000;
+      font-weight: 900;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .presenter-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .btn-sm {
+      padding: 6px 11px;
+      font-size: 12px;
+    }
+    .btn-ghl {
+      background: var(--emerald);
+      color: #022c22;
+    }
+    .btn-ghl:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+    }
+    .btn-blue:hover { filter: brightness(1.15); }
+    .btn-amber {
+      background: var(--amber);
+      color: #111827;
+    }
+    .btn-amber:hover { filter: brightness(1.1); }
+    .btn-outline {
+      background: var(--surface-2);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover { border-color: var(--cyan); }
+
+    /* Stop Stepper Strip */
+    .stepper-strip {
+      max-width: 1280px;
+      margin: 18px auto 0;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+    @media (max-width: 960px) {
+      .stepper-strip { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+    }
+    .step-tab {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .step-tab:hover { border-color: var(--cyan); }
+    .step-tab.active-stop {
+      background: rgba(0, 102, 255, 0.18);
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25);
+    }
+    .step-tab-num {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--cyan);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .step-tab.active-stop .step-tab-num::after {
+      content: "LIVE";
+      background: var(--emerald);
+      color: #022c22;
+      font-size: 9.5px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 900;
+    }
+    .step-tab-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 3px;
+    }
+    .step-tab-time {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1280px;
+      margin: 22px auto;
+      padding: 0 24px;
+    }
+
+    /* Welcome Instructions Banner */
+    .welcome-banner {
+      background: linear-gradient(135deg, #111e38, #0f172a);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .welcome-banner h2 {
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .welcome-banner p {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      max-width: 780px;
+    }
+
+    /* Stop Card */
+    .stop-section {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 32px;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .stop-section.is-current-stop {
+      border-color: var(--cyan);
+      box-shadow: 0 0 35px rgba(0, 102, 255, 0.22);
+    }
+    .stop-head {
+      background: var(--surface-2);
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .stop-head-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .stop-pill {
+      background: var(--blue);
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+    .live-now-pill {
+      display: none;
+      background: var(--emerald);
+      color: #022c22;
+      font-weight: 900;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .stop-section.is-current-stop .live-now-pill {
+      display: inline-block;
+    }
+    .owner-pill {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .stop-head h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* Tyson's Private Coaching Box (Only visible in ?presenter=1) */
+    .coach-box {
+      display: none;
+      background: rgba(245, 158, 11, 0.1);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.35);
+      border-left: 5px solid var(--amber);
+      padding: 14px 24px;
+    }
+    body.is-presenter .coach-box {
+      display: block;
+    }
+    .coach-title {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--amber);
+      margin-bottom: 4px;
+    }
+    .coach-box p {
+      font-size: 13.5px;
+      color: #fef3c7;
+    }
+
+    /* Stop Grid: Left = Hands-On Tasks, Right = Live Screenshot Reference */
+    .stop-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.15fr;
+      gap: 24px;
+      padding: 24px;
+    }
+    @media (max-width: 960px) {
+      .stop-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Hands-On Task Cards */
+    .tasks-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .tasks-col-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--cyan);
+    }
+
+    .task-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .task-card.done {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.55);
+    }
+    .task-card.spotlighted {
+      border-color: var(--amber);
+      background: rgba(245, 158, 11, 0.12);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.28), 0 12px 30px rgba(0, 0, 0, 0.5);
+      animation: pulseCard 1.5s infinite;
+    }
+    @keyframes pulseCard {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25); }
+      50% { box-shadow: 0 0 0 7px rgba(245, 158, 11, 0.45); }
+    }
+    .spotlight-banner {
+      display: none;
+      background: var(--amber);
+      color: #000;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      width: fit-content;
+    }
+    .task-card.spotlighted .spotlight-banner {
+      display: inline-block;
+    }
+
+    .task-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .task-check {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border-radius: 6px;
+      border: 2px solid var(--cyan);
+      background: var(--bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 900;
+      color: transparent;
+      margin-top: 2px;
+      transition: all 0.15s;
+    }
+    .task-card.done .task-check {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #022c22;
+    }
+    .task-content {
+      flex: 1;
+    }
+    .task-step-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--cyan);
+      letter-spacing: 0.5px;
+    }
+    .task-card.done .task-step-label {
+      color: var(--emerald);
+    }
+    .task-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin: 2px 0 6px;
+    }
+    .task-desc {
+      font-size: 13.5px;
+      color: #cbd5e1;
+    }
+    .task-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .spotlight-btn {
+      display: none;
+    }
+    body.is-presenter .spotlight-btn {
+      display: inline-flex;
+    }
+
+    /* Screenshot Column */
+    .screen-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .screen-frame {
+      background: #050811;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .screen-bar {
+      background: #1e293b;
+      padding: 8px 14px;
+      font-size: 11.5px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .screen-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Floating Sync Status Pill (Bottom Right) */
+    .sync-pill {
+      position: fixed;
+      bottom: 20px;
+      right: 24px;
+      z-index: 300;
+      background: rgba(17, 26, 46, 0.95);
+      border: 1px solid var(--cyan);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+    .sync-pill:hover {
+      background: var(--surface-2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRESENTER REMOTE CONTROL BAR (Visible only on ?presenter=1) -->
+  <div class="presenter-bar">
+    <div class="presenter-bar-inner">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span class="presenter-badge">TYSON PRESENTER REMOTE</span>
+        <span style="font-size:13px; color:#fde68a; font-weight:600;">
+          When you click Prev/Next or Spotlight below, Marc &amp; Troy's browsers scroll &amp; highlight automatically!
+        </span>
+      </div>
+      <div class="presenter-controls">
+        <button class="btn btn-sm btn-outline" onclick="presenterChangeStop(-1)">◀ Prev Stop</button>
+        <span id="presenterStopIndicator" style="font-size:13px; font-weight:800; color:#fff; padding: 0 8px;">Stop 1 / 7</span>
+        <button class="btn btn-sm btn-amber" onclick="presenterChangeStop(1)">Next Stop ▶ (Scroll Everyone)</button>
+        <button class="btn btn-sm btn-blue" onclick="presenterPullEveryone()">📍 Pull Everyone to Current Stop</button>
+        <button class="btn btn-sm btn-outline" onclick="presenterReset()">🔄 Reset Checkboxes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="live-dot"></div>
+        <div>
+          <div class="brand-title">Horizon Energy Global — Hands-On GHL Interactive Walkthrough</div>
+          <div class="brand-sub">Follow along live • Click each green button to try it yourself in GoHighLevel • Check off each box as you go</div>
+        </div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">0 / 18 Completed</div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">
+          Open GHL in New Tab ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 7-STOP STEPPER TABS -->
+  <nav class="stepper-strip" id="stepperStrip">
+    <div class="step-tab active-stop" data-stop="1" onclick="handleTabClick(1)">
+      <div class="step-tab-num">Stop 1</div>
+      <div class="step-tab-title">Dashboard</div>
+      <div class="step-tab-time">5 Mins • Everyone</div>
+    </div>
+    <div class="step-tab" data-stop="2" onclick="handleTabClick(2)">
+      <div class="step-tab-num">Stop 2</div>
+      <div class="step-tab-title">VDR, NDA &amp; Portal</div>
+      <div class="step-tab-time">15 Mins • Marc &amp; Troy</div>
+    </div>
+    <div class="step-tab" data-stop="3" onclick="handleTabClick(3)">
+      <div class="step-tab-num">Stop 3</div>
+      <div class="step-tab-title">$20M Seed Pipeline</div>
+      <div class="step-tab-time">10 Mins • Marc &amp; Troy</div>
+    </div>
+    <div class="step-tab" data-stop="4" onclick="handleTabClick(4)">
+      <div class="step-tab-num">Stop 4</div>
+      <div class="step-tab-title">3 Pillar Pipelines</div>
+      <div class="step-tab-time">10 Mins • Pillar VPs</div>
+    </div>
+    <div class="step-tab" data-stop="5" onclick="handleTabClick(5)">
+      <div class="step-tab-num">Stop 5</div>
+      <div class="step-tab-title">Smart Lists &amp; Inbox</div>
+      <div class="step-tab-time">8 Mins • Everyone</div>
+    </div>
+    <div class="step-tab" data-stop="6" onclick="handleTabClick(6)">
+      <div class="step-tab-num">Stop 6</div>
+      <div class="step-tab-title">AI Bot &amp; Dispatches</div>
+      <div class="step-tab-time">7 Mins • Marc &amp; Troy</div>
+    </div>
+    <div class="step-tab" data-stop="7" onclick="handleTabClick(7)">
+      <div class="step-tab-num">Stop 7</div>
+      <div class="step-tab-title">Calendar Sync &amp; Habit</div>
+      <div class="step-tab-time">5 Mins • Everyone</div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- HOW THIS WORKS BANNER -->
+    <div class="welcome-banner">
+      <div>
+        <h2>Hands-On Guided Mode (Marc Shares Screen • Everyone Follows Along)</h2>
+        <p>
+          Instead of watching slides, you are going to click through your new system hands-on.
+          <strong>How it works:</strong> Keep this walkthrough open in <strong>Tab 1</strong> and GoHighLevel open in <strong>Tab 2</strong>.
+          As Tyson moves from Stop to Stop, this page will scroll automatically for everyone—and you can check off each step below as you test it!
+        </p>
+      </div>
+      <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">
+        Launch GoHighLevel (Tab 2) ↗
+      </a>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- STOP 1: DASHBOARD -->
+    <!-- ================================================================== -->
+    <section class="stop-section is-current-stop" id="stop-1" data-stop="1">
+      <div class="stop-head">
+        <div class="stop-head-left">
+          <span class="stop-pill">STOP 1 (00:00 – 05:00)</span>
+          <span class="live-now-pill">● LIVE NOW</span>
+          <h3>Your Home Screen: "Raise Command Center" Dashboard</h3>
+          <span class="owner-pill">Hands-On: Everyone</span>
+        </div>
+        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">
+          Open Dashboard in GHL ↗
+        </a>
+      </div>
+
+      <div class="coach-box">
+        <div class="coach-title">Tyson's Private Coach Note (Invisible on Marc's Screen)</div>
+        <p>Have Marc share his screen on Zoom. Ask Marc to click the green button on <strong>Task 1.1</strong> below to open the GHL Dashboard. Watch his screen to confirm he sees "Raise Command Center" at the top left, then have him click "Quick filters" (Task 1.2) so he sees how to filter by owner.</p>
+      </div>
+
+      <div class="stop-grid">
+        <div class="tasks-col">
+          <div class="tasks-col-label">Hands-On Steps to Do Right Now:</div>
+
+          <div class="task-card" id="task-1-1" data-task="1-1">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('1-1')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 1.1</div>
+                <div class="task-title">Open Your "Raise Command Center" Dashboard</div>
+                <div class="task-desc">Click the green button below (or click <strong>Dashboard</strong> in the top-left sidebar of GHL). Confirm that <strong>Raise Command Center</strong> loads at the top-left of your screen.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">Open Dashboard in GHL ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('1-1')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(1, '1-1')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-1-2" data-task="1-2">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('1-2')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 1.2</div>
+                <div class="task-title">Locate Your 4 Core Capital Raise Widgets</div>
+                <div class="task-desc">Find these 4 widgets on your dashboard: (1) <strong>Active Seed Pipeline</strong>, (2) <strong>Funded to Date</strong>, (3) <strong>Seed Raise ($20M) Pipeline Funnel</strong>, and (4) <strong>NDA Sent / NDA Signed counters</strong> on the right.</div>
+                <div class="task-actions">
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('1-2')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(1, '1-2')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-1-3" data-task="1-3">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('1-3')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 1.3</div>
+                <div class="task-title">Try the Date &amp; Quick Filters</div>
+                <div class="task-desc">Click <strong>"Quick filters"</strong> (under Raise Command Center) or the <strong>"Last 30 days"</strong> date picker in the top-right corner to see how you can filter dashboard numbers by owner or timeframe.</div>
+                <div class="task-actions">
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('1-3')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(1, '1-3')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="screen-col">
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>WHAT YOUR SCREEN SHOULD LOOK LIKE (Dashboard)</span>
+              <span>Left Sidebar → Dashboard</span>
+            </div>
+            <img src="screenshots/02_dashboard.jpg" alt="Dashboard Screenshot" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STOP 2: VDR GATE, DELAWARE NDA & 8-MODULE DATA ROOM -->
+    <!-- ================================================================== -->
+    <section class="stop-section" id="stop-2" data-stop="2">
+      <div class="stop-head">
+        <div class="stop-head-left">
+          <span class="stop-pill">STOP 2 (05:00 – 20:00)</span>
+          <span class="live-now-pill">● LIVE NOW</span>
+          <h3>How an Investor Enters the Data Room (Website → Delaware NDA → 8-Module Portal)</h3>
+          <span class="owner-pill">Hands-On: Marc Thomas &amp; Troy Carson</span>
+        </div>
+        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/memberships/courses/products-v2" target="_blank">
+          Open 8-Module Data Room ↗
+        </a>
+      </div>
+
+      <div class="coach-box">
+        <div class="coach-title">Tyson's Private Coach Note (Invisible on Marc's Screen)</div>
+        <p>Guide Marc through the 3 steps below so he and Troy see the exact investor journey: (1) where the investor requests access on <code>/investors/</code>, (2) where the Delaware Mutual NDA template lives under <strong>Payments → Documents &amp; Contracts → Templates</strong>, and (3) where the 8 Data Room folders live under <strong>Memberships → Courses → Products</strong>.</p>
+      </div>
+
+      <div class="stop-grid">
+        <div class="tasks-col">
+          <div class="tasks-col-label">Hands-On Steps for Marc &amp; Troy:</div>
+
+          <div class="task-card" id="task-2-1" data-task="2-1">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('2-1')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 2.1</div>
+                <div class="task-title">View the Public Website VDR Request Gate</div>
+                <div class="task-desc">Click the button below to open <code>horizonenergyglobal.com/investors/</code> and click <strong>"Request VDR Access"</strong>. Notice the Check Size dropdown, Pillar Interest, and mandatory SEC 506(c) certification box. When an investor submits this, GHL automatically emails them the Delaware Mutual NDA.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-blue" href="https://horizonenergyglobal.com/investors/" target="_blank">1. Open Website /investors/ Gate ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('2-1')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(2, '2-1')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-2-2" data-task="2-2">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('2-2')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 2.2</div>
+                <div class="task-title">Open the Delaware Mutual NDA E-Sign Template in GHL</div>
+                <div class="task-desc">In GHL, click <strong>Payments</strong> on the left sidebar → hover over <strong>Documents &amp; Contracts</strong> at the top → click <strong>Templates</strong> (or click the green button below). Locate <strong>"Horizon Energy — Mutual NDA (Delaware)"</strong>. If an investor doesn't sign within 48 hours and 5 days, GHL sends automatic reminder emails.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/payments/proposals-estimates/templates" target="_blank">2. Open NDA Template in GHL ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('2-2')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(2, '2-2')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-2-3" data-task="2-3">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('2-3')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 2.3</div>
+                <div class="task-title">Open the 8-Module "Horizon Investor Data Room"</div>
+                <div class="task-desc">In GHL, click <strong>Memberships</strong> on the left sidebar → click <strong>Courses → Products</strong> at the top (or click the green button below). Click into <strong>Horizon Investor Data Room</strong> to see all 8 diligence folders (Executive Summary, Financials, CCUS, Geothermal, UKCS P2690, Governance, Contracts, Subscription Docs).</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/memberships/courses/products-v2" target="_blank">3. Open 8-Module Data Room in GHL ↗</a>
+                  <a class="btn btn-sm btn-outline" href="https://JUqOHds1n765fzyHX6en.app.clientclub.net/" target="_blank">Preview Investor Portal Login ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('2-3')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(2, '2-3')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="screen-col">
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>WHAT YOUR SCREEN SHOULD LOOK LIKE (Memberships → Courses → Products)</span>
+            </div>
+            <img src="screenshots/05_dataroom_courses.jpg" alt="8-Module Data Room" />
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="screen-frame">
+              <div class="screen-bar"><span>Website /investors/ Gate</span></div>
+              <img src="screenshots/10_website_investors.jpg" alt="Website VDR Gate" />
+            </div>
+            <div class="screen-frame">
+              <div class="screen-bar"><span>Investor Portal Login</span></div>
+              <img src="screenshots/09_client_portal_login.jpg" alt="Investor Portal Login" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STOP 3: $20M SEED RAISE PIPELINE -->
+    <!-- ================================================================== -->
+    <section class="stop-section" id="stop-3" data-stop="3">
+      <div class="stop-head">
+        <div class="stop-head-left">
+          <span class="stop-pill">STOP 3 (20:00 – 30:00)</span>
+          <span class="live-now-pill">● LIVE NOW</span>
+          <h3>Managing the "$20M Seed Raise" Pipeline Board</h3>
+          <span class="owner-pill">Hands-On: Marc Thomas &amp; Troy Carson</span>
+        </div>
+        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">
+          Open Seed Raise Pipeline ↗
+        </a>
+      </div>
+
+      <div class="coach-box">
+        <div class="coach-title">Tyson's Private Coach Note (Invisible on Marc's Screen)</div>
+        <p><strong>IMPORTANT WATCH-FOR:</strong> When Marc opens <strong>Opportunities</strong>, if a filter is active (like <code>Advanced filters (1)</code>), the board will say "No opportunities match the current filters". Have Marc click the white <strong>"Clear filters"</strong> button if he sees that! Then explain that Stages 1–6 move automatically, and Marc/Troy only drag cards across Stages 7–10.</p>
+      </div>
+
+      <div class="stop-grid">
+        <div class="tasks-col">
+          <div class="tasks-col-label">Hands-On Steps for Marc &amp; Troy:</div>
+
+          <div class="task-card" id="task-3-1" data-task="3-1">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('3-1')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 3.1</div>
+                <div class="task-title">Open "Opportunities" &amp; View the Seed Raise ($20M) Board</div>
+                <div class="task-desc">Click <strong>Opportunities</strong> in the left sidebar (or click the green button below). Confirm the top-left dropdown says <strong>Seed Raise ($20M)</strong>. <em>Tip: If you see "Advanced filters (1)", click <strong>"Clear filters"</strong> so you see all deals.</em></div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">Open Seed Raise Pipeline in GHL ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('3-1')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(3, '3-1')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-3-2" data-task="3-2">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('3-2')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 3.2</div>
+                <div class="task-title">Scroll Right Across the 10 Stages (Auto vs. Manual)</div>
+                <div class="task-desc">
+                  Scroll horizontally across the columns:<br/>
+                  • <strong>Stages 1–6 Move Automatically:</strong> <code>New Inquiry</code> → <code>Accreditation Submitted</code> → <code>NDA Sent</code> → <code>NDA Signed / VDR Granted</code> → <code>Engaged in VDR</code> → <code>Mgmt Q&amp;A Scheduled</code>.<br/>
+                  • <strong>Stages 7–10 Are Dragged by Marc &amp; Troy:</strong> <code>Diligence</code> → <code>Soft Circle</code> → <code>Subscription Docs</code> → <code>Funded</code>.
+                </div>
+                <div class="task-actions">
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('3-2')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(3, '3-2')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-3-3" data-task="3-3">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('3-3')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 3.3</div>
+                <div class="task-title">Know What Happens When You Drag a Deal to "Soft Circle"</div>
+                <div class="task-desc">Whenever you drag an investor card into <strong>Soft Circle</strong>, GHL automatically assigns a task reminding Troy &amp; Marc to record the <strong>Soft-Circle Amount ($)</strong> and <strong>Accreditation Verification Method</strong> (CPA/Attorney Letter, 3rd-Party Verification, etc.).</div>
+                <div class="task-actions">
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('3-3')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(3, '3-3')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="screen-col">
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>WHAT YOUR SCREEN SHOULD LOOK LIKE (Opportunities → Seed Raise)</span>
+            </div>
+            <img src="screenshots/03_opportunities.jpg" alt="Seed Raise Pipeline" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STOP 4: 3 COMMERCIAL PILLAR PIPELINES -->
+    <!-- ================================================================== -->
+    <section class="stop-section" id="stop-4" data-stop="4">
+      <div class="stop-head">
+        <div class="stop-head-left">
+          <span class="stop-pill">STOP 4 (30:00 – 40:00)</span>
+          <span class="live-now-pill">● LIVE NOW</span>
+          <h3>Switching Between the 3 Commercial Pillar Pipelines (CCUS, Geothermal, UKCS)</h3>
+          <span class="owner-pill">Hands-On: Graham, Stephen, Jonathan &amp; Marc</span>
+        </div>
+        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/pipelines" target="_blank">
+          View All 4 Pipelines ↗
+        </a>
+      </div>
+
+      <div class="coach-box">
+        <div class="coach-title">Tyson's Private Coach Note (Invisible on Marc's Screen)</div>
+        <p>Have Marc click the <strong>"Seed Raise ($20M)" dropdown</strong> at the top-left of Opportunities so everyone sees the 3 commercial pipelines: <strong>CCUS — Commercial</strong> (Graham), <strong>Geothermal CaaS</strong> (Stephen &amp; Marc), and <strong>UKCS Farm-Out &amp; JV</strong> (Jonathan).</p>
+      </div>
+
+      <div class="stop-grid">
+        <div class="tasks-col">
+          <div class="tasks-col-label">Hands-On Steps to Do Right Now:</div>
+
+          <div class="task-card" id="task-4-1" data-task="4-1">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('4-1')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 4.1</div>
+                <div class="task-title">Click the Pipeline Dropdown (Top-Left of Opportunities)</div>
+                <div class="task-desc">Inside <strong>Opportunities</strong>, click the dropdown box that says <strong>Seed Raise ($20M)</strong>. Practice switching between <strong>CCUS — Commercial</strong> (Graham), <strong>Geothermal CaaS</strong> (Stephen &amp; Marc), and <strong>UKCS Farm-Out &amp; JV</strong> (Jonathan).</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">Open Pipeline Dropdown in GHL ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('4-1')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(4, '4-1')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-4-2" data-task="4-2">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('4-2')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 4.2</div>
+                <div class="task-title">See How Website Inquiries &amp; Whitepapers Route Automatically</div>
+                <div class="task-desc">Whenever a prospect selects <em>CCUS</em>, <em>Geothermal CaaS</em>, or <em>UKCS</em> on <code>horizonenergyglobal.com/contact/</code> (or downloads a technical whitepaper), GHL automatically creates a deal in that pillar's pipeline and emails the assigned VP.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-outline" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/pipelines" target="_blank">View All 4 Pipelines Setup ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('4-2')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(4, '4-2')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="screen-col">
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>WHAT YOUR SCREEN SHOULD LOOK LIKE (Opportunities → Pipelines)</span>
+            </div>
+            <img src="screenshots/11_all_4_pipelines.jpg" alt="All 4 Pipelines" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STOP 5: 8 SMART LISTS & CONVERSATIONS INBOX -->
+    <!-- ================================================================== -->
+    <section class="stop-section" id="stop-5" data-stop="5">
+      <div class="stop-head">
+        <div class="stop-head-left">
+          <span class="stop-pill">STOP 5 (40:00 – 48:00)</span>
+          <span class="live-now-pill">● LIVE NOW</span>
+          <h3>One-Click Contact Lists ("Smart Lists") &amp; Unified Conversations Inbox</h3>
+          <span class="owner-pill">Hands-On: Everyone</span>
+        </div>
+        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/contacts/smart_list/All" target="_blank">
+          Open 8 Smart Lists in GHL ↗
+        </a>
+      </div>
+
+      <div class="coach-box">
+        <div class="coach-title">Tyson's Private Coach Note (Invisible on Marc's Screen)</div>
+        <p>Have Marc click <strong>Contacts</strong> in the left sidebar. Point out the 8 pre-built tabs across the top bar (<em>All Investors</em>, <em>Hot Investors</em>, <em>VDR Active — No Q&amp;A Booked</em>, etc.). Then have him click <strong>Conversations</strong> on the left menu so he sees where all emails, texts, and chat messages come in.</p>
+      </div>
+
+      <div class="stop-grid">
+        <div class="tasks-col">
+          <div class="tasks-col-label">Hands-On Steps to Do Right Now:</div>
+
+          <div class="task-card" id="task-5-1" data-task="5-1">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('5-1')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 5.1</div>
+                <div class="task-title">Click "Contacts" &amp; Click Through Your 8 Smart List Tabs</div>
+                <div class="task-desc">
+                  Click <strong>Contacts</strong> in the left sidebar. Look across the top bar and click through your pre-built lists:<br/>
+                  • <strong>Hot Investors (Score ≥ 50):</strong> Investors actively opening emails (+5), clicking links (+10), logging into the VDR (+15), or booking calls (+25).<br/>
+                  • <strong>VDR Active — No Q&amp;A Booked:</strong> Signed NDA, inside the Data Room, ready for a personal call.<br/>
+                  • <strong>CCUS / Geothermal / UKCS Prospects &amp; Newsletter Subscribers.</strong>
+                </div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/contacts/smart_list/All" target="_blank">Open Contacts &amp; Smart Lists ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('5-1')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(5, '5-1')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-5-2" data-task="5-2">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('5-2')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 5.2</div>
+                <div class="task-title">Open the "Conversations" Unified Inbox</div>
+                <div class="task-desc">Click <strong>Conversations</strong> (second item in the left sidebar). Every email reply, website live chat, AI summary, and signed NDA notification for any investor appears here in one chronological stream.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-blue" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/conversations" target="_blank">Open Conversations Inbox ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('5-2')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(5, '5-2')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="screen-col">
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>WHAT YOUR SCREEN SHOULD LOOK LIKE (Contacts → 8 Smart List Tabs at Top)</span>
+            </div>
+            <img src="screenshots/04_smart_lists.jpg" alt="Smart Lists" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STOP 6: AI AGENTS & QUARTERLY EMAIL DISPATCHES -->
+    <!-- ================================================================== -->
+    <section class="stop-section" id="stop-6" data-stop="6">
+      <div class="stop-head">
+        <div class="stop-head-left">
+          <span class="stop-pill">STOP 6 (48:00 – 55:00)</span>
+          <span class="live-now-pill">● LIVE NOW</span>
+          <h3>Your 2 AI Agents (506c Safe) &amp; Quarterly Email Dispatches</h3>
+          <span class="owner-pill">Hands-On: Marc Thomas &amp; Troy Carson</span>
+        </div>
+        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/marketing/emails/templates" target="_blank">
+          Open Email Dispatches ↗
+        </a>
+      </div>
+
+      <div class="coach-box">
+        <div class="coach-title">Tyson's Private Coach Note (Invisible on Marc's Screen)</div>
+        <p>Have Marc click through the 3 buttons below: (1) <strong>AI Front Desk Assistant</strong> (remind him to click the "Agents List" tab inside Conversation AI), (2) <strong>Investor Follow-Up Drafter</strong> (under Managed Agents on the left side of Agent Studio), and (3) <strong>Marketing → Emails → Templates</strong> where Dispatches 01, 02, and 03 live.</p>
+      </div>
+
+      <div class="stop-grid">
+        <div class="tasks-col">
+          <div class="tasks-col-label">Hands-On Steps for Marc &amp; Troy:</div>
+
+          <div class="task-card" id="task-6-1" data-task="6-1">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('6-1')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 6.1</div>
+                <div class="task-title">View Your 24/7 Website Chat Bot ("AI Front Desk Assistant")</div>
+                <div class="task-desc">Click <strong>AI Agents → Conversation AI → click "Agents List" tab</strong>. This bot answers website questions 24/7, books Management Q&amp;A calls, and enforces a strict <strong>SEC 506(c) guardrail</strong> (it never quotes IRR or valuation publicly—instead it routes visitors to your NDA gate).</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/ai-agents/conversation-ai" target="_blank">1. Open Conversation AI ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('6-1')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(6, '6-1')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-6-2" data-task="6-2">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('6-2')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 6.2</div>
+                <div class="task-title">Open Your Post-Call Email Copilot ("Investor Follow-Up Drafter")</div>
+                <div class="task-desc">Click <strong>AI Agents → Agent Studio</strong> and look under <strong>"Managed Agents (1)"</strong> on the left panel for <strong>Investor Follow-Up Drafter</strong>. Paste rough notes after any investor call and it drafts a polished 150-word follow-up email referencing the right Data Room modules.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-blue" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/ai-agents/agent-studio" target="_blank">2. Open Agent Studio Drafter ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('6-2')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(6, '6-2')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-6-3" data-task="6-3">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('6-3')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 6.3</div>
+                <div class="task-title">Locate Your 3 Quarterly Dispatches (Marketing → Emails → Templates)</div>
+                <div class="task-desc">Click <strong>Marketing → Emails → Templates</strong>. See <strong>Dispatch 01 (45Q &amp; Class VI)</strong>, <strong>Dispatch 02 (Geothermal CaaS)</strong>, and <strong>Dispatch 03 (UKCS Licence P2690)</strong>. To send one to your list, click <em>Campaigns → New → Email Templates</em> and send to your <em>Newsletter Subscribers</em> or <em>All Investors</em> Smart List.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/marketing/emails/templates" target="_blank">3. Open Email Templates in GHL ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('6-3')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(6, '6-3')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="screen-col">
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>WHAT YOUR SCREEN SHOULD LOOK LIKE (Marketing → Emails → Templates)</span>
+            </div>
+            <img src="screenshots/08_email_templates.jpg" alt="Email Templates" />
+          </div>
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>WHAT YOUR SCREEN SHOULD LOOK LIKE (AI Agents → Agent Studio → Managed Agents)</span>
+            </div>
+            <img src="screenshots/12_agent_studio.jpg" alt="Agent Studio" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STOP 7: CALENDAR SYNC & 5-MINUTE DAILY HABIT -->
+    <!-- ================================================================== -->
+    <section class="stop-section" id="stop-7" data-stop="7">
+      <div class="stop-head">
+        <div class="stop-head-left">
+          <span class="stop-pill">STOP 7 (55:00 – 60:00)</span>
+          <span class="live-now-pill">● LIVE NOW</span>
+          <h3>Final Setup: Connect Your Calendar &amp; Bookmark GHL</h3>
+          <span class="owner-pill">Hands-On: Everyone</span>
+        </div>
+        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/settings/profile" target="_blank">
+          Open My Profile Settings ↗
+        </a>
+      </div>
+
+      <div class="coach-box">
+        <div class="coach-title">Tyson's Private Coach Note (Invisible on Marc's Screen)</div>
+        <p>Wrap up the hour by having Marc, Troy, Graham, Stephen, and Jonathan complete these two final setup actions right now: (1) connect their Outlook/Google calendar under <strong>Settings → My Profile</strong> so the Management Q&amp;A calendar never double-books them, and (2) bookmark the dashboard &amp; download the <strong>LeadConnector</strong> mobile app.</p>
+      </div>
+
+      <div class="stop-grid" style="grid-template-columns: 1fr;">
+        <div class="tasks-col">
+          <div class="tasks-col-label">Final 2 Hands-On Steps for All 5 Executives:</div>
+
+          <div class="task-card" id="task-7-1" data-task="7-1">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('7-1')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 7.1</div>
+                <div class="task-title">Connect Your Outlook or Google Calendar (So Q&amp;A Bookings Check Your Busy Times)</div>
+                <div class="task-desc">In GHL, click <strong>Settings</strong> (bottom-left gear icon) → click <strong>My Profile</strong> → scroll down to <strong>Calendar Settings</strong> and connect your Google or Outlook calendar.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/settings/profile" target="_blank">Open My Profile Settings in GHL ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('7-1')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(7, '7-1')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-7-2" data-task="7-2">
+            <div class="spotlight-banner">👈 DO THIS STEP NOW</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('7-2')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Hands-On Step 7.2</div>
+                <div class="task-title">Bookmark GHL &amp; Download the "LeadConnector" Mobile App</div>
+                <div class="task-desc">Bookmark <code>https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard</code> in your browser, and install the <strong>LeadConnector</strong> app from the iOS App Store or Google Play Store to get instant push notifications when a Hot Investor enters the Data Room or books a Q&amp;A call.</div>
+                <div class="task-actions">
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('7-2')">Mark Step Done ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(7, '7-2')">🔦 Spotlight on Marc's Screen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLOATING SYNC STATUS PILL -->
+  <div class="sync-pill" onclick="jumpToCurrentStop()" title="Click to jump to the current live stop">
+    <div class="live-dot"></div>
+    <span id="syncPillText">Live Sync Active: Stop 1 of 7 (Click to Jump Here)</span>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const isPresenter = params.get('presenter') === '1' || params.get('presenter') === 'tyson';
+    if (isPresenter) {
+      document.body.classList.add('is-presenter');
+    }
+
+    const TOTAL_TASKS = 17;
+    let localState = {
+      currentStop: 1,
+      activeTask: '1-1',
+      completed: {},
+      scrollSeq: 0,
+      spotlightSeq: 0,
+      spotlightTarget: ''
+    };
+
+    function applyState(newState, isInitial) {
+      const stopChangedOrPulled = !isInitial && (newState.scrollSeq !== localState.scrollSeq);
+      const spotlightChanged = !isInitial && (newState.spotlightSeq !== localState.spotlightSeq);
+
+      localState = {
+        ...localState,
+        ...newState,
+        completed: (newState.completed && typeof newState.completed === 'object') ? newState.completed : {}
+      };
+
+      // Update active Stop UI
+      document.querySelectorAll('.step-tab').forEach(tab => {
+        const s = parseInt(tab.getAttribute('data-stop'), 10);
+        tab.classList.toggle('active-stop', s === localState.currentStop);
+      });
+      document.querySelectorAll('.stop-section').forEach(sec => {
+        const s = parseInt(sec.getAttribute('data-stop'), 10);
+        sec.classList.toggle('is-current-stop', s === localState.currentStop);
+      });
+
+      const ind = document.getElementById('presenterStopIndicator');
+      if (ind) ind.textContent = `Stop ${localState.currentStop} / 7`;
+
+      const pill = document.getElementById('syncPillText');
+      if (pill) pill.textContent = `Live Sync: Stop ${localState.currentStop} of 7 • Click to Re-Center`;
+
+      // Update completed tasks UI
+      let doneCount = 0;
+      document.querySelectorAll('.task-card').forEach(card => {
+        const tid = card.getAttribute('data-task');
+        const isDone = !!localState.completed[tid];
+        card.classList.toggle('done', isDone);
+        if (isDone) doneCount++;
+        card.classList.toggle('spotlighted', localState.spotlightTarget === tid && localState.spotlightSeq > 0);
+      });
+
+      const pct = Math.min(100, Math.round((doneCount / TOTAL_TASKS) * 100));
+      document.getElementById('progressBarFill').style.width = pct + '%';
+      document.getElementById('progressText').textContent = `${doneCount} / ${TOTAL_TASKS} Completed (${pct}%)`;
+
+      // Auto-scroll when presenter advances stop or spotlights a task
+      if (spotlightChanged && localState.spotlightTarget) {
+        const targetEl = document.getElementById('task-' + localState.spotlightTarget);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+      }
+      if (stopChangedOrPulled) {
+        jumpToCurrentStop();
+      }
+    }
+
+    function jumpToCurrentStop() {
+      const stopEl = document.getElementById('stop-' + localState.currentStop);
+      if (stopEl) {
+        const yOffset = isPresenter ? -125 : -80;
+        const y = stopEl.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+
+    const SYNC_TOPIC = 'heg-ghl-live-sync-2026-v1';
+    const NTFY_URL = 'https://ntfy.sh/' + SYNC_TOPIC;
+
+    async function publishState(nextState) {
+      applyState(nextState, false);
+      try {
+        await fetch(NTFY_URL, {
+          method: 'POST',
+          body: JSON.stringify(nextState)
+        });
+      } catch (e) {
+        console.error('Live sync publish error:', e);
+      }
+    }
+
+    function handleTabClick(stopNum) {
+      if (isPresenter) {
+        const next = {
+          ...localState,
+          currentStop: stopNum,
+          scrollSeq: (localState.scrollSeq || 0) + 1,
+          updatedAt: Date.now()
+        };
+        publishState(next);
+      } else {
+        const stopEl = document.getElementById('stop-' + stopNum);
+        if (stopEl) {
+          const y = stopEl.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    }
+
+    function presenterChangeStop(delta) {
+      const nextStop = Math.max(1, Math.min(7, localState.currentStop + delta));
+      const next = {
+        ...localState,
+        currentStop: nextStop,
+        scrollSeq: (localState.scrollSeq || 0) + 1,
+        updatedAt: Date.now()
+      };
+      publishState(next);
+    }
+
+    function presenterPullEveryone() {
+      const next = {
+        ...localState,
+        scrollSeq: (localState.scrollSeq || 0) + 1,
+        updatedAt: Date.now()
+      };
+      publishState(next);
+    }
+
+    function presenterSpotlight(stopNum, taskId) {
+      const next = {
+        ...localState,
+        currentStop: stopNum,
+        spotlightTarget: taskId,
+        spotlightSeq: (localState.spotlightSeq || 0) + 1,
+        scrollSeq: (localState.scrollSeq || 0) + 1,
+        updatedAt: Date.now()
+      };
+      publishState(next);
+    }
+
+    function presenterReset() {
+      if (confirm('Reset all checkboxes and return everyone to Stop 1?')) {
+        const next = {
+          currentStop: 1,
+          activeTask: '1-1',
+          completed: {},
+          scrollSeq: (localState.scrollSeq || 0) + 1,
+          spotlightSeq: 0,
+          spotlightTarget: '',
+          updatedAt: Date.now()
+        };
+        publishState(next);
+      }
+    }
+
+    function toggleTask(taskId) {
+      const updatedCompleted = { ...(localState.completed || {}) };
+      if (updatedCompleted[taskId]) {
+        delete updatedCompleted[taskId];
+      } else {
+        updatedCompleted[taskId] = true;
+      }
+      const next = {
+        ...localState,
+        completed: updatedCompleted,
+        updatedAt: Date.now()
+      };
+      publishState(next);
+    }
+
+    // 1. Hydrate latest state on page load
+    async function loadInitialState() {
+      try {
+        const res = await fetch(NTFY_URL + '/json?poll=1&since=24h', { cache: 'no-store' });
+        if (res.ok) {
+          const text = await res.text();
+          const lines = text.trim().split('\n').filter(Boolean);
+          let latest = null;
+          for (const line of lines) {
+            try {
+              const evt = JSON.parse(line);
+              if (evt.event === 'message' && evt.message) {
+                const parsed = JSON.parse(evt.message);
+                if (parsed && typeof parsed.currentStop === 'number') {
+                  latest = parsed;
+                }
+              }
+            } catch (err) {}
+          }
+          if (latest) {
+            applyState(latest, true);
+          }
+        }
+      } catch (e) {}
+    }
+
+    // 2. Real-time Server-Sent Events (SSE) stream (<50ms latency across all browsers)
+    function connectLiveStream() {
+      const es = new EventSource(NTFY_URL + '/sse');
+      es.onmessage = (e) => {
+        try {
+          const evt = JSON.parse(e.data);
+          if (evt.event === 'message' && evt.message) {
+            const parsed = JSON.parse(evt.message);
+            if (parsed && typeof parsed.currentStop === 'number') {
+              applyState(parsed, false);
+            }
+          }
+        } catch (err) {}
+      };
+      es.onerror = () => {
+        es.close();
+        setTimeout(connectLiveStream, 2000);
+      };
+    }
+
+    loadInitialState();
+    connectLiveStream();
+  </script>
+</body>
+</html>
