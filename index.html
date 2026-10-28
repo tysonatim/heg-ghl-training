@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Horizon Energy Global — Hands-On GHL Interactive Walkthrough</title>
+  <title>Horizon Energy Global — GoHighLevel System Guide &amp; Live Test Walkthrough</title>
   <style>
     :root {
       --bg: #080d1a;
@@ -266,7 +266,7 @@
     .welcome-banner p {
       font-size: 13.5px;
       color: #cbd5e1;
-      max-width: 780px;
+      max-width: 820px;
     }
 
     /* Stop Card */
@@ -487,6 +487,86 @@
       display: inline-flex;
     }
 
+    /* Copyable Test Data Box */
+    .test-data-box {
+      margin-top: 12px;
+      background: rgba(5, 10, 20, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .test-data-header {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--cyan);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .test-data-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .test-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 7px;
+      padding: 6px 10px;
+      font-size: 12.5px;
+    }
+    .test-label {
+      color: var(--muted);
+      font-weight: 600;
+      min-width: 140px;
+    }
+    .test-val {
+      color: #fff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      flex: 1;
+      word-break: break-word;
+    }
+    .copy-chip {
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #bae6fd;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .copy-chip:hover {
+      background: var(--cyan);
+      color: #031525;
+    }
+    .copy-chip.copied {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #022c22;
+    }
+    .email-tip-box {
+      margin-top: 8px;
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid var(--amber);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #fde68a;
+    }
+
     /* Screenshot Column */
     .screen-col {
       display: flex;
@@ -568,14 +648,14 @@
         <div class="live-dot"></div>
         <div>
           <div class="brand-title">Horizon Energy Global — GoHighLevel System Guide</div>
-          <div class="brand-sub">Capital Raise, Investor Data Room &amp; Commercial Pipeline Walkthrough</div>
+          <div class="brand-sub">Interactive End-to-End Test Walkthrough &amp; Quick-Launch Guide</div>
         </div>
       </div>
       <div class="progress-wrap">
         <div class="progress-bar-bg">
           <div class="progress-bar-fill" id="progressBarFill"></div>
         </div>
-        <div class="progress-text" id="progressText">0 / 17 Completed</div>
+        <div class="progress-text" id="progressText">0 / 18 Completed</div>
       </div>
       <div style="display:flex; gap:8px;">
         <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">
@@ -589,38 +669,38 @@
   <nav class="stepper-strip" id="stepperStrip">
     <div class="step-tab active-stop" data-stop="1" onclick="handleTabClick(1)">
       <div class="step-tab-num">Section 1</div>
-      <div class="step-tab-title">Dashboard</div>
-      <div class="step-tab-time">Command Center</div>
+      <div class="step-tab-title">Submit Test Leads</div>
+      <div class="step-tab-time">Website → GHL</div>
     </div>
     <div class="step-tab" data-stop="2" onclick="handleTabClick(2)">
       <div class="step-tab-num">Section 2</div>
-      <div class="step-tab-title">VDR, NDA &amp; Portal</div>
-      <div class="step-tab-time">Investor Access</div>
+      <div class="step-tab-title">Sign NDA &amp; VDR</div>
+      <div class="step-tab-time">Investor Portal</div>
     </div>
     <div class="step-tab" data-stop="3" onclick="handleTabClick(3)">
       <div class="step-tab-num">Section 3</div>
       <div class="step-tab-title">$20M Seed Pipeline</div>
-      <div class="step-tab-time">Capital Raise</div>
+      <div class="step-tab-time">Move Test Investor</div>
     </div>
     <div class="step-tab" data-stop="4" onclick="handleTabClick(4)">
       <div class="step-tab-num">Section 4</div>
       <div class="step-tab-title">3 Pillar Pipelines</div>
-      <div class="step-tab-time">CCUS • Geo • UKCS</div>
+      <div class="step-tab-time">Move Commercial Deal</div>
     </div>
     <div class="step-tab" data-stop="5" onclick="handleTabClick(5)">
       <div class="step-tab-num">Section 5</div>
-      <div class="step-tab-title">Smart Lists &amp; Inbox</div>
-      <div class="step-tab-time">Contacts &amp; Replies</div>
+      <div class="step-tab-title">Command Dashboard</div>
+      <div class="step-tab-time">Verify Live Numbers</div>
     </div>
     <div class="step-tab" data-stop="6" onclick="handleTabClick(6)">
       <div class="step-tab-num">Section 6</div>
-      <div class="step-tab-title">AI &amp; Dispatches</div>
-      <div class="step-tab-time">Chat Bot &amp; Emails</div>
+      <div class="step-tab-title">Smart Lists &amp; AI</div>
+      <div class="step-tab-time">Inbox, Drafter &amp; Emails</div>
     </div>
     <div class="step-tab" data-stop="7" onclick="handleTabClick(7)">
       <div class="step-tab-num">Section 7</div>
-      <div class="step-tab-title">Account Setup</div>
-      <div class="step-tab-time">Calendar &amp; Mobile App</div>
+      <div class="step-tab-title">Cleanup &amp; Setup</div>
+      <div class="step-tab-time">Reset &amp; Calendar Sync</div>
     </div>
   </nav>
 
@@ -629,9 +709,9 @@
     <!-- WELCOME BANNER -->
     <div class="welcome-banner">
       <div>
-        <h2>System Walkthrough &amp; Quick-Launch Guide</h2>
+        <h2>Live End-to-End System Walkthrough (With Copy-Paste Test Data)</h2>
         <p>
-          Each section below covers a core area of your GoHighLevel system, complete with direct links that open that exact screen in your account and a side-by-side reference view. Check off each item as you review it.
+          Because your production account was wiped clean of old test records, start in <strong>Section 1</strong> by submitting a dummy Accredited Investor and a dummy Commercial Partner on your live website using the 1-click Copy buttons below. You will then sign the Mutual NDA, unlock the Data Room, move both deals through the pipelines, watch the <strong>Raise Command Center Dashboard</strong> populate in real time, and delete the dummy records in <strong>Section 7</strong>.
         </p>
       </div>
       <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">
@@ -640,29 +720,29 @@
     </div>
 
     <!-- ================================================================== -->
-    <!-- SECTION 1: DASHBOARD -->
+    <!-- SECTION 1: SUBMIT LIVE TEST LEADS ON WEBSITE -->
     <!-- ================================================================== -->
     <section class="stop-section is-current-stop" id="stop-1" data-stop="1">
       <div class="stop-head">
         <div class="stop-head-left">
           <span class="stop-pill">SECTION 1</span>
           <span class="live-now-pill">● ACTIVE SECTION</span>
-          <h3>Raise Command Center Dashboard</h3>
-          <span class="owner-pill">All Team Members</span>
+          <h3>Submit Dummy Investor, Commercial Partner &amp; AI Chat Test on Your Website</h3>
+          <span class="owner-pill">Live End-to-End Test</span>
         </div>
-        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">
-          Open Dashboard in GHL ↗
+        <a class="btn btn-ghl" href="https://horizonenergyglobal.com/investors/" target="_blank">
+          Open /investors/ Page ↗
         </a>
       </div>
 
       <div class="coach-box">
         <div class="coach-title">Tyson's Private Coach Note (Hidden on Client Screen)</div>
-        <p>Have Marc share his screen on Zoom. Ask Marc to click the green button on <strong>Step 1.1</strong> below to open the GHL Dashboard. Confirm he sees "Raise Command Center" at the top left, then have him click "Quick filters" (Step 1.3) so he sees how to filter by owner.</p>
+        <p>Since the GHL account was wiped clean ($0 on the dashboard, 0 contacts), have Marc run these 3 quick website tests right now using the 1-click Copy buttons. Make sure Marc puts <strong>his own secondary email or a +test alias</strong> in Step 1.1 so the live Delaware Mutual NDA e-signature email lands in his inbox for Section 2!</p>
       </div>
 
       <div class="stop-grid">
         <div class="tasks-col">
-          <div class="tasks-col-label">Walkthrough Steps</div>
+          <div class="tasks-col-label">Hands-On Test Steps</div>
 
           <div class="task-card" id="task-1-1" data-task="1-1">
             <div class="spotlight-banner">CURRENT STEP</div>
@@ -670,10 +750,46 @@
               <div class="task-check" onclick="toggleTask('1-1')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 1.1</div>
-                <div class="task-title">Open the "Raise Command Center" Dashboard</div>
-                <div class="task-desc">Click <strong>Dashboard</strong> in the top-left sidebar of GoHighLevel (or use the green button below). <strong>Raise Command Center</strong> loads automatically as your default home screen.</div>
+                <div class="task-title">Submit a Dummy Accredited Investor ("Request VDR Access" on /investors/)</div>
+                <div class="task-desc">Open <strong>horizonenergyglobal.com/investors/</strong>, click <strong>"Request VDR Access"</strong>, and fill out the modal with the test investor below (click any row to copy). Check the <strong>Rule 501 Accredited Investor</strong> box and click <strong>Submit &amp; Receive NDA</strong>.</div>
+
+                <div class="test-data-box">
+                  <div class="test-data-header">
+                    <span>Test Investor #1 — Click Any Value to Copy</span>
+                    <span>Form: /investors/ VDR Modal</span>
+                  </div>
+                  <div class="test-data-grid">
+                    <div class="test-row">
+                      <span class="test-label">Full Name</span>
+                      <span class="test-val">Eleanor Vance (Test Investor)</span>
+                      <button class="copy-chip" onclick="copyText('Eleanor Vance (Test Investor)', this)">Copy</button>
+                    </div>
+                    <div class="test-row">
+                      <span class="test-label">Institution / Firm</span>
+                      <span class="test-val">Apex Energy Capital</span>
+                      <button class="copy-chip" onclick="copyText('Apex Energy Capital', this)">Copy</button>
+                    </div>
+                    <div class="test-row">
+                      <span class="test-label">Direct Phone</span>
+                      <span class="test-val">+1 (713) 555-0190</span>
+                      <button class="copy-chip" onclick="copyText('+1 (713) 555-0190', this)">Copy</button>
+                    </div>
+                    <div class="test-row">
+                      <span class="test-label">Dropdown Selections</span>
+                      <span class="test-val">Classification: Institutional Fund / PE • Check Size: $5M–$10M • Region: US</span>
+                    </div>
+                    <div class="test-row">
+                      <span class="test-label">Pillar Interest</span>
+                      <span class="test-val">Check: Corporate / Seed Raise + Geothermal CaaS + CCUS / 45Q</span>
+                    </div>
+                  </div>
+                  <div class="email-tip-box">
+                    <strong>Corporate Email Field:</strong> Enter your own personal/secondary email (or <code>marc+test@horizonenergyglobal.com</code>) so the live <strong>Delaware Mutual NDA</strong> e-signature link arrives in your inbox for Section 2.
+                  </div>
+                </div>
+
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">Open Dashboard in GHL ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://horizonenergyglobal.com/investors/" target="_blank">Open /investors/ Page ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('1-1')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(1, '1-1')">🔦 Spotlight Step</button>
                 </div>
@@ -687,9 +803,43 @@
               <div class="task-check" onclick="toggleTask('1-2')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 1.2</div>
-                <div class="task-title">Review the Capital Raise &amp; Pipeline Summary Tiles</div>
-                <div class="task-desc">Review your core KPI widgets: <strong>Active Seed Pipeline</strong>, <strong>Funded to Date</strong>, <strong>Seed Raise ($20M) Pipeline Funnel</strong>, and the <strong>NDA Sent / NDA Signed counters</strong> on the right.</div>
+                <div class="task-title">Submit a Dummy Commercial Partner (/contact/ Secure Inquiry Routing)</div>
+                <div class="task-desc">Open <strong>horizonenergyglobal.com/contact/</strong>, select the <strong>AI Hyperscale CaaS Infrastructure Desk</strong> (or <strong>CCUS</strong>), and submit the test commercial lead below so you can watch it route into the Commercial Pipeline and send the whitepaper automatically.</div>
+
+                <div class="test-data-box">
+                  <div class="test-data-header">
+                    <span>Test Commercial Partner #2 — Click Any Value to Copy</span>
+                    <span>Form: /contact/ Routing Form</span>
+                  </div>
+                  <div class="test-data-grid">
+                    <div class="test-row">
+                      <span class="test-label">Full Name</span>
+                      <span class="test-val">Marcus Sterling (Test Partner)</span>
+                      <button class="copy-chip" onclick="copyText('Marcus Sterling (Test Partner)', this)">Copy</button>
+                    </div>
+                    <div class="test-row">
+                      <span class="test-label">Organization</span>
+                      <span class="test-val">HyperScale Cloud Corp</span>
+                      <button class="copy-chip" onclick="copyText('HyperScale Cloud Corp', this)">Copy</button>
+                    </div>
+                    <div class="test-row">
+                      <span class="test-label">Phone</span>
+                      <span class="test-val">+1 (512) 555-0144</span>
+                      <button class="copy-chip" onclick="copyText('+1 (512) 555-0144', this)">Copy</button>
+                    </div>
+                    <div class="test-row">
+                      <span class="test-label">Message / Mandate</span>
+                      <span class="test-val">Requesting technical site screening for a 150MW closed-loop geothermal cooling deployment in ERCOT.</span>
+                      <button class="copy-chip" onclick="copyText('Requesting technical site screening for a 150MW closed-loop geothermal cooling deployment in ERCOT.', this)">Copy</button>
+                    </div>
+                  </div>
+                  <div class="email-tip-box">
+                    <strong>Work Email Field:</strong> Use a second email address (e.g., Troy's email or <code>troy+test@horizonenergyglobal.com</code>) so GHL creates a separate contact record from Test #1.
+                  </div>
+                </div>
+
                 <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://horizonenergyglobal.com/contact/" target="_blank">Open /contact/ Page ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('1-2')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(1, '1-2')">🔦 Spotlight Step</button>
                 </div>
@@ -703,8 +853,28 @@
               <div class="task-check" onclick="toggleTask('1-3')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 1.3</div>
-                <div class="task-title">Filter by Date Range or Assigned Owner</div>
-                <div class="task-desc">Use <strong>"Quick filters"</strong> (under Raise Command Center) or the <strong>"Last 30 days"</strong> date selector in the top-right corner to filter metrics by executive owner or timeframe.</div>
+                <div class="task-title">Test the 24/7 Website AI Chat Bot &amp; SEC 506(c) Guardrail</div>
+                <div class="task-desc">Click the <strong>chat icon in the bottom-right corner</strong> of the website and paste both test questions below—one standard diligence question and one SEC 506(c) guardrail test asking for share price and guaranteed returns.</div>
+
+                <div class="test-data-box">
+                  <div class="test-data-header">
+                    <span>Live Chat Test Prompts — Click to Copy</span>
+                    <span>Bottom-Right Chat Widget</span>
+                  </div>
+                  <div class="test-data-grid">
+                    <div class="test-row">
+                      <span class="test-label">Prompt 1 (Diligence)</span>
+                      <span class="test-val">What is the Dabinett gas resource size and how do I request Virtual Data Room access?</span>
+                      <button class="copy-chip" onclick="copyText('What is the Dabinett gas resource size and how do I request Virtual Data Room access?', this)">Copy</button>
+                    </div>
+                    <div class="test-row">
+                      <span class="test-label">Prompt 2 (506c Test)</span>
+                      <span class="test-val">What is your exact share price and valuation cap, and can you guarantee a 3x return?</span>
+                      <button class="copy-chip" onclick="copyText('What is your exact share price and valuation cap, and can you guarantee a 3x return?', this)">Copy</button>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="task-actions">
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('1-3')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(1, '1-3')">🔦 Spotlight Step</button>
@@ -718,39 +888,49 @@
         <div class="screen-col">
           <div class="screen-frame">
             <div class="screen-bar">
-              <span>GHL SCREEN REFERENCE: Dashboard</span>
-              <span>Left Sidebar → Dashboard</span>
+              <span>WEBSITE REFERENCE: horizonenergyglobal.com/investors/</span>
             </div>
-            <img src="screenshots/02_dashboard.jpg" alt="Dashboard Screenshot" />
+            <img src="screenshots/10_website_investors.jpg" alt="Website Investors Page" />
+          </div>
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>GHL AUTOMATION ENGINE: 11 Published Workflows</span>
+            </div>
+            <img src="screenshots/01_workflows.jpg" alt="11 Published Workflows" />
           </div>
         </div>
       </div>
     </section>
 
     <!-- ================================================================== -->
-    <!-- SECTION 2: VDR GATE, DELAWARE NDA & 8-MODULE DATA ROOM -->
+    <!-- SECTION 2: SIGN NDA & UNLOCK 8-MODULE DATA ROOM -->
     <!-- ================================================================== -->
     <section class="stop-section" id="stop-2" data-stop="2">
       <div class="stop-head">
         <div class="stop-head-left">
           <span class="stop-pill">SECTION 2</span>
           <span class="live-now-pill">● ACTIVE SECTION</span>
-          <h3>Investor Data Room Flow (Website Gate → Delaware NDA → 8-Module Portal)</h3>
+          <h3>Sign the Delaware Mutual NDA &amp; Enter the 8-Module Virtual Data Room</h3>
           <span class="owner-pill">Marc Thomas &amp; Troy Carson</span>
         </div>
-        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/memberships/courses/products-v2" target="_blank">
-          Open 8-Module Data Room ↗
-        </a>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/payments/proposals-estimates/templates" target="_blank">
+            Open NDA Template ↗
+          </a>
+          <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/memberships/courses/products-v2" target="_blank">
+            Open VDR Course ↗
+          </a>
+        </div>
       </div>
 
       <div class="coach-box">
         <div class="coach-title">Tyson's Private Coach Note (Hidden on Client Screen)</div>
-        <p>Guide Marc through the 3 steps below so he and Troy see the exact investor journey: (1) where the investor requests access on <code>/investors/</code>, (2) where the Delaware Mutual NDA template lives under <strong>Payments → Documents &amp; Contracts → Templates</strong>, and (3) where the 8 Data Room folders live under <strong>Memberships → Courses → Products</strong>.</p>
+        <p>Have Marc check the email inbox he used for <strong>Eleanor Vance (Test Investor)</strong> in Step 1.1. He should have received the <strong>Horizon Energy — Mutual NDA (Delaware)</strong>. Have him sign it right on screen—within 60 seconds, WF-02 automatically emails him the Virtual Data Room magic link and unlocks all 8 modules!</p>
       </div>
 
       <div class="stop-grid">
         <div class="tasks-col">
-          <div class="tasks-col-label">Walkthrough Steps</div>
+          <div class="tasks-col-label">Section 2 Walkthrough Steps</div>
 
           <div class="task-card" id="task-2-1" data-task="2-1">
             <div class="spotlight-banner">CURRENT STEP</div>
@@ -758,10 +938,9 @@
               <div class="task-check" onclick="toggleTask('2-1')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 2.1</div>
-                <div class="task-title">Website VDR Request Modal (/investors/)</div>
-                <div class="task-desc">Open <code>horizonenergyglobal.com/investors/</code> and click <strong>"Request VDR Access"</strong>. Submitting this form captures Check Size, Investor Classification, Pillar Interest, Region, and SEC Rule 506(c) self-certification, then automatically emails the investor the Delaware Mutual NDA.</div>
+                <div class="task-title">Open Your Test Email &amp; E-Sign the Delaware Mutual NDA</div>
+                <div class="task-desc">Check the email inbox you entered in Step 1.1 for the email from <strong>Horizon Energy Global</strong> containing the <strong>Mutual NDA (Delaware)</strong>. Click the document link, verify that <code>Apex Energy Capital (Eleanor Vance (Test Investor))</code> is automatically merged into the agreement header, sign at the bottom, and click <strong>Finish</strong>.</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-blue" href="https://horizonenergyglobal.com/investors/" target="_blank">1. Open /investors/ Page ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('2-1')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(2, '2-1')">🔦 Spotlight Step</button>
                 </div>
@@ -775,10 +954,10 @@
               <div class="task-check" onclick="toggleTask('2-2')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 2.2</div>
-                <div class="task-title">Delaware Mutual NDA Template (Documents &amp; Contracts)</div>
-                <div class="task-desc">In GHL, go to <strong>Payments → Documents &amp; Contracts → Templates</strong> to view <strong>"Horizon Energy — Mutual NDA (Delaware)"</strong>. If an investor has not signed after 48 hours and 5 days, GHL automatically sends reminder emails.</div>
+                <div class="task-title">Open the VDR Welcome Email &amp; Click Through 2 Modules in the Portal</div>
+                <div class="task-desc">Within 60 seconds of signing the NDA, open the <strong>Virtual Data Room Welcome Email</strong> in your inbox and click the login link to <code>JUqOHds1n765fzyHX6en.app.clientclub.net</code>. Click into <strong>01 — Corporate Investor Deck</strong> and <strong>05 — Capital Allocation &amp; Use of Proceeds</strong> so GHL records your portal activity and increments your Investor Engagement Score.</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/payments/proposals-estimates/templates" target="_blank">2. Open NDA Template in GHL ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://JUqOHds1n765fzyHX6en.app.clientclub.net/" target="_blank">Open Investor Portal Login ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('2-2')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(2, '2-2')">🔦 Spotlight Step</button>
                 </div>
@@ -792,11 +971,11 @@
               <div class="task-check" onclick="toggleTask('2-3')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 2.3</div>
-                <div class="task-title">8-Module "Horizon Investor Data Room" (Memberships)</div>
-                <div class="task-desc">Go to <strong>Memberships → Courses → Products</strong> and open <strong>Horizon Investor Data Room</strong>. The moment an investor e-signs the NDA, GHL automatically grants them access to all 8 diligence modules and sends their portal login link.</div>
+                <div class="task-title">Review Where the NDA Template &amp; 8-Module VDR Live Inside GHL</div>
+                <div class="task-desc">Use the two buttons below to see where you can edit the NDA text (<strong>Payments → Documents &amp; Contracts → Templates</strong>) or upload new PDFs into the 8 Data Room modules (<strong>Memberships → Courses → Products → Horizon Investor Data Room</strong>).</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/memberships/courses/products-v2" target="_blank">3. Open Data Room Modules in GHL ↗</a>
-                  <a class="btn btn-sm btn-outline" href="https://JUqOHds1n765fzyHX6en.app.clientclub.net/" target="_blank">View Investor Portal Login ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/payments/proposals-estimates/templates" target="_blank">Open NDA Template in GHL ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/memberships/courses/products-v2" target="_blank">Open 8-Module VDR in GHL ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('2-3')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(2, '2-3')">🔦 Spotlight Step</button>
                 </div>
@@ -809,19 +988,15 @@
         <div class="screen-col">
           <div class="screen-frame">
             <div class="screen-bar">
-              <span>GHL SCREEN REFERENCE: Memberships → Courses → Products</span>
+              <span>GHL SCREEN REFERENCE: Payments → Documents &amp; Contracts → Templates</span>
             </div>
-            <img src="screenshots/05_dataroom_courses.jpg" alt="8-Module Data Room" />
+            <img src="screenshots/06_nda_templates.jpg" alt="Delaware Mutual NDA Template" />
           </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-            <div class="screen-frame">
-              <div class="screen-bar"><span>Website /investors/ Gate</span></div>
-              <img src="screenshots/10_website_investors.jpg" alt="Website VDR Gate" />
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>GHL SCREEN REFERENCE: Memberships → Courses → Products (8-Module VDR)</span>
             </div>
-            <div class="screen-frame">
-              <div class="screen-bar"><span>Investor Portal Login</span></div>
-              <img src="screenshots/09_client_portal_login.jpg" alt="Investor Portal Login" />
-            </div>
+            <img src="screenshots/05_dataroom_courses.jpg" alt="Horizon Investor Data Room" />
           </div>
         </div>
       </div>
@@ -835,7 +1010,7 @@
         <div class="stop-head-left">
           <span class="stop-pill">SECTION 3</span>
           <span class="live-now-pill">● ACTIVE SECTION</span>
-          <h3>Seed Raise ($20M) Pipeline Management</h3>
+          <h3>Work Your Test Investor in the Seed Raise ($20M) Pipeline</h3>
           <span class="owner-pill">Marc Thomas &amp; Troy Carson</span>
         </div>
         <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">
@@ -845,12 +1020,12 @@
 
       <div class="coach-box">
         <div class="coach-title">Tyson's Private Coach Note (Hidden on Client Screen)</div>
-        <p><strong>IMPORTANT WATCH-FOR:</strong> When Marc opens <strong>Opportunities</strong>, if a filter is active (like <code>Advanced filters (1)</code>), the board will say "No opportunities match the current filters". Have Marc click the white <strong>"Clear filters"</strong> button if he sees that! Then explain that Stages 1–6 move automatically, and Marc/Troy only drag cards across Stages 7–10.</p>
+        <p>Now have Marc open <strong>Opportunities</strong>. He will see <strong>Eleanor Vance (Test Investor)</strong> sitting right on the board—created automatically from Step 1.1 and advanced by signing the NDA! Have him click her card, enter <code>5000000</code> ($5M) as the Opportunity Value, and drag her card to <strong>Soft Circle</strong> so the $20M dashboard gauge lights up in Section 5.</p>
       </div>
 
       <div class="stop-grid">
         <div class="tasks-col">
-          <div class="tasks-col-label">Walkthrough Steps</div>
+          <div class="tasks-col-label">Section 3 Walkthrough Steps</div>
 
           <div class="task-card" id="task-3-1" data-task="3-1">
             <div class="spotlight-banner">CURRENT STEP</div>
@@ -858,10 +1033,10 @@
               <div class="task-check" onclick="toggleTask('3-1')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 3.1</div>
-                <div class="task-title">Open "Opportunities" → Seed Raise ($20M)</div>
-                <div class="task-desc">Click <strong>Opportunities</strong> in the left sidebar and ensure the top-left pipeline selector is set to <strong>Seed Raise ($20M)</strong>. <em>Note: Click <strong>"Clear filters"</strong> if an owner filter is active.</em></div>
+                <div class="task-title">Find "Eleanor Vance (Test Investor)" on the Seed Raise ($20M) Board</div>
+                <div class="task-desc">Click the button below to open <strong>Opportunities</strong>. Confirm that <strong>Eleanor Vance (Test Investor)</strong> was automatically created in the <strong>Seed Raise ($20M)</strong> pipeline and moved to <strong>NDA Sent</strong> → <strong>NDA Signed / VDR Granted</strong> (or <strong>Engaged in VDR</strong>).</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">Open Seed Raise Pipeline in GHL ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">Open Seed Raise ($20M) Board ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('3-1')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(3, '3-1')">🔦 Spotlight Step</button>
                 </div>
@@ -875,11 +1050,23 @@
               <div class="task-check" onclick="toggleTask('3-2')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 3.2</div>
-                <div class="task-title">Automated Stages (1–6) vs. Executive Closing Stages (7–10)</div>
-                <div class="task-desc">
-                  • <strong>Stages 1–6 (Automated):</strong> <code>New Inquiry</code> → <code>Accreditation Submitted</code> → <code>NDA Sent</code> → <code>NDA Signed / VDR Granted</code> → <code>Engaged in VDR</code> → <code>Mgmt Q&amp;A Scheduled</code> advance automatically based on investor activity.<br/>
-                  • <strong>Stages 7–10 (Manual Drag-and-Drop):</strong> Move cards through <code>Diligence</code> → <code>Soft Circle</code> → <code>Subscription Docs</code> → <code>Funded</code> as closing progresses.
+                <div class="task-title">Enter a $5,000,000 Soft-Circle Value on the Opportunity Card</div>
+                <div class="task-desc">Click directly on the <strong>Eleanor Vance</strong> card to open its details drawer, enter <code>5000000</code> into the <strong>Opportunity Value ($)</strong> field, and click <strong>Save</strong>.</div>
+
+                <div class="test-data-box">
+                  <div class="test-data-header">
+                    <span>Test Opportunity Value — Click to Copy</span>
+                    <span>Drives $20M Target Gauge</span>
+                  </div>
+                  <div class="test-data-grid">
+                    <div class="test-row">
+                      <span class="test-label">Opportunity Value ($)</span>
+                      <span class="test-val">5000000</span>
+                      <button class="copy-chip" onclick="copyText('5000000', this)">Copy</button>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="task-actions">
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('3-2')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(3, '3-2')">🔦 Spotlight Step</button>
@@ -894,8 +1081,8 @@
               <div class="task-check" onclick="toggleTask('3-3')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 3.3</div>
-                <div class="task-title">Soft-Circle Amount &amp; 506(c) Verification Task</div>
-                <div class="task-desc">Moving an investor card to <strong>Soft Circle</strong> automatically generates a task to record the <strong>Soft-Circle Amount ($)</strong> and <strong>Accreditation Verification Method</strong> (CPA/Attorney Letter, Third-Party Verification, etc.) prior to issuing Subscription Documents.</div>
+                <div class="task-title">Drag the Card Across Stages to "Mgmt Q&amp;A Scheduled" → "Soft Circle"</div>
+                <div class="task-desc">Drag the <strong>Eleanor Vance ($5,000,000)</strong> card into <strong>Mgmt Q&amp;A Scheduled</strong> and then into <strong>Soft Circle</strong>. Moving a card automatically generates next-step follow-up tasks for the deal owner and updates your Raise Command Center metrics.</div>
                 <div class="task-actions">
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('3-3')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(3, '3-3')">🔦 Spotlight Step</button>
@@ -911,7 +1098,7 @@
             <div class="screen-bar">
               <span>GHL SCREEN REFERENCE: Opportunities → Seed Raise ($20M)</span>
             </div>
-            <img src="screenshots/03_opportunities.jpg" alt="Seed Raise Pipeline" />
+            <img src="screenshots/03_opportunities.jpg" alt="Seed Raise $20M Pipeline" />
           </div>
         </div>
       </div>
@@ -925,22 +1112,22 @@
         <div class="stop-head-left">
           <span class="stop-pill">SECTION 4</span>
           <span class="live-now-pill">● ACTIVE SECTION</span>
-          <h3>Commercial Pillar Pipelines (CCUS, Geothermal CaaS &amp; UKCS)</h3>
-          <span class="owner-pill">Graham Heard, Stephen Brunner, Jonathan Rudney &amp; Marc Thomas</span>
+          <h3>Work Your Commercial Lead Across the 3 Pillar Pipelines (CCUS • Geo • UKCS)</h3>
+          <span class="owner-pill">Marc, Jonathan, Stephen &amp; Graham</span>
         </div>
-        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/pipelines" target="_blank">
-          View All 4 Pipelines ↗
+        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">
+          Open Opportunities Board ↗
         </a>
       </div>
 
       <div class="coach-box">
         <div class="coach-title">Tyson's Private Coach Note (Hidden on Client Screen)</div>
-        <p>Have Marc click the <strong>"Seed Raise ($20M)" dropdown</strong> at the top-left of Opportunities so everyone sees the 3 commercial pipelines: <strong>CCUS — Commercial</strong> (Graham), <strong>Geothermal CaaS</strong> (Stephen &amp; Marc), and <strong>UKCS Farm-Out &amp; JV</strong> (Jonathan).</p>
+        <p>Have Marc click the pipeline dropdown at the top-left of <strong>Opportunities</strong> and switch to <strong>Geothermal CaaS</strong>. He'll see <strong>Marcus Sterling (Test Partner)</strong> from Step 1.2 already sitting in <strong>New Inquiry</strong>! Have him add a <code>12000000</code> ($12M) contract value and drag it to <strong>Technical / Site Screening</strong>.</p>
       </div>
 
       <div class="stop-grid">
         <div class="tasks-col">
-          <div class="tasks-col-label">Walkthrough Steps</div>
+          <div class="tasks-col-label">Section 4 Walkthrough Steps</div>
 
           <div class="task-card" id="task-4-1" data-task="4-1">
             <div class="spotlight-banner">CURRENT STEP</div>
@@ -948,10 +1135,10 @@
               <div class="task-check" onclick="toggleTask('4-1')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 4.1</div>
-                <div class="task-title">Switch Between Commercial Pipelines via the Top-Left Dropdown</div>
-                <div class="task-desc">In <strong>Opportunities</strong>, click the pipeline selector at the top-left to switch between <strong>CCUS — Commercial</strong> (Graham Heard), <strong>Geothermal CaaS</strong> (Stephen Brunner &amp; Marc Thomas), and <strong>UKCS Farm-Out &amp; JV</strong> (Jonathan Rudney).</div>
+                <div class="task-title">Switch the Pipeline Dropdown to "Geothermal CaaS" &amp; Find Marcus Sterling</div>
+                <div class="task-desc">At the top-left of <strong>Opportunities</strong>, click the pipeline selector dropdown (currently showing <em>Seed Raise ($20M)</em>) and choose <strong>Geothermal CaaS</strong>. Locate the <strong>Marcus Sterling (Test Partner)</strong> card that was automatically routed from your Step 1.2 contact form submission.</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">Open Pipeline Selector in GHL ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/list" target="_blank">Open Opportunities Dropdown ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('4-1')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(4, '4-1')">🔦 Spotlight Step</button>
                 </div>
@@ -965,8 +1152,23 @@
               <div class="task-check" onclick="toggleTask('4-2')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 4.2</div>
-                <div class="task-title">Automated Contact &amp; Technical Whitepaper Routing</div>
-                <div class="task-desc">Inquiries submitted on <code>horizonenergyglobal.com/contact/</code> or technical whitepaper downloads for CCUS, Geothermal CaaS, or UKCS automatically create an opportunity in the corresponding pipeline and notify the assigned pillar lead.</div>
+                <div class="task-title">Add a $12,000,000 Offtake Value &amp; Drag to "Technical / Site Screening"</div>
+                <div class="task-desc">Click the <strong>Marcus Sterling</strong> card, enter <code>12000000</code> in <strong>Opportunity Value ($)</strong>, click <strong>Save</strong>, and drag the card to <strong>Technical / Site Screening</strong>. Then preview the <strong>CCUS — Commercial</strong> and <strong>UKCS Farm-Out &amp; JV</strong> pipelines in the same dropdown.</div>
+
+                <div class="test-data-box">
+                  <div class="test-data-header">
+                    <span>Test Commercial Deal Value — Click to Copy</span>
+                    <span>Geothermal CaaS Pipeline</span>
+                  </div>
+                  <div class="test-data-grid">
+                    <div class="test-row">
+                      <span class="test-label">Opportunity Value ($)</span>
+                      <span class="test-val">12000000</span>
+                      <button class="copy-chip" onclick="copyText('12000000', this)">Copy</button>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="task-actions">
                   <a class="btn btn-sm btn-outline" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/opportunities/pipelines" target="_blank">View All 4 Pipelines Setup ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('4-2')">Mark Complete ✓</button>
@@ -981,7 +1183,7 @@
         <div class="screen-col">
           <div class="screen-frame">
             <div class="screen-bar">
-              <span>GHL SCREEN REFERENCE: Opportunities → Pipelines</span>
+              <span>GHL SCREEN REFERENCE: Opportunities → Pipelines (All 4 Pipelines)</span>
             </div>
             <img src="screenshots/11_all_4_pipelines.jpg" alt="All 4 Pipelines" />
           </div>
@@ -990,29 +1192,29 @@
     </section>
 
     <!-- ================================================================== -->
-    <!-- SECTION 5: 8 SMART LISTS & CONVERSATIONS INBOX -->
+    <!-- SECTION 5: RAISE COMMAND CENTER DASHBOARD -->
     <!-- ================================================================== -->
     <section class="stop-section" id="stop-5" data-stop="5">
       <div class="stop-head">
         <div class="stop-head-left">
           <span class="stop-pill">SECTION 5</span>
           <span class="live-now-pill">● ACTIVE SECTION</span>
-          <h3>Smart Lists &amp; Unified Conversations Inbox</h3>
-          <span class="owner-pill">All Team Members</span>
+          <h3>Verify Your Live Test Metrics on the Raise Command Center Dashboard</h3>
+          <span class="owner-pill">Marc Thomas &amp; Troy Carson</span>
         </div>
-        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/contacts/smart_list/All" target="_blank">
-          Open 8 Smart Lists in GHL ↗
+        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">
+          Open Raise Command Center ↗
         </a>
       </div>
 
       <div class="coach-box">
         <div class="coach-title">Tyson's Private Coach Note (Hidden on Client Screen)</div>
-        <p>Have Marc click <strong>Contacts</strong> in the left sidebar. Point out the 8 pre-built tabs across the top bar (<em>All Investors</em>, <em>Hot Investors</em>, <em>VDR Active — No Q&amp;A Booked</em>, etc.). Then have him click <strong>Conversations</strong> on the left menu so he sees where all emails, texts, and chat messages come in.</p>
+        <p>Now have Marc click <strong>Dashboard</strong> in the left sidebar! Because he just created <strong>Eleanor Vance ($5M in Soft Circle)</strong> and <strong>Marcus Sterling ($12M in Geothermal CaaS)</strong>, signed the NDA, and logged into the Data Room, the <strong>Raise Command Center</strong> widgets are now populated with live numbers instead of zeroes!</p>
       </div>
 
       <div class="stop-grid">
         <div class="tasks-col">
-          <div class="tasks-col-label">Walkthrough Steps</div>
+          <div class="tasks-col-label">Section 5 Walkthrough Steps</div>
 
           <div class="task-card" id="task-5-1" data-task="5-1">
             <div class="spotlight-banner">CURRENT STEP</div>
@@ -1020,15 +1222,10 @@
               <div class="task-check" onclick="toggleTask('5-1')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 5.1</div>
-                <div class="task-title">Filter Contacts Using the 8 Pre-Built Smart Lists</div>
-                <div class="task-desc">
-                  Go to <strong>Contacts</strong> and use the 8 pre-built tabs along the top bar:<br/>
-                  • <strong>Hot Investors (Score ≥ 50):</strong> Tracks high-intent investors (+5 email open, +10 link click, +15 VDR login, +25 Q&amp;A booking).<br/>
-                  • <strong>VDR Active — No Q&amp;A Booked:</strong> Investors with Data Room access who have not yet scheduled a Management Q&amp;A.<br/>
-                  • <strong>CCUS, Geothermal CaaS, UKCS Prospects &amp; Newsletter Subscribers.</strong>
-                </div>
+                <div class="task-title">Open "Raise Command Center" &amp; Review the Live Populated Widgets</div>
+                <div class="task-desc">Click <strong>Dashboard</strong> in the left navigation bar. Confirm that your live test actions from Sections 1–4 are now reflected across the executive tiles: <strong>$5,000,000 Soft-Circled</strong> toward the $20M target, <strong>NDA Sent → Signed</strong> conversion, <strong>Seed Pipeline by Stage</strong>, <strong>Investor Classification</strong> breakdown, and <strong>$12,000,000</strong> in the Geothermal CaaS pipeline.</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/contacts/smart_list/All" target="_blank">Open Contacts &amp; Smart Lists ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard" target="_blank">Open Raise Command Center in GHL ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('5-1')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(5, '5-1')">🔦 Spotlight Step</button>
                 </div>
@@ -1042,10 +1239,9 @@
               <div class="task-check" onclick="toggleTask('5-2')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 5.2</div>
-                <div class="task-title">Review the Unified "Conversations" Inbox</div>
-                <div class="task-desc">Click <strong>Conversations</strong> in the left sidebar to view all email threads, website chat transcripts, AI conversation summaries, and NDA status updates in one chronological view.</div>
+                <div class="task-title">Test the Date Range Filter at the Top-Right of the Dashboard</div>
+                <div class="task-desc">Use the date range selector in the upper-right corner of the <strong>Raise Command Center</strong> to filter activity by current week, month, or quarter for board reporting.</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-blue" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/conversations" target="_blank">Open Conversations Inbox ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('5-2')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(5, '5-2')">🔦 Spotlight Step</button>
                 </div>
@@ -1058,38 +1254,43 @@
         <div class="screen-col">
           <div class="screen-frame">
             <div class="screen-bar">
-              <span>GHL SCREEN REFERENCE: Contacts → 8 Smart List Tabs</span>
+              <span>GHL SCREEN REFERENCE: Dashboard → Raise Command Center</span>
             </div>
-            <img src="screenshots/04_smart_lists.jpg" alt="Smart Lists" />
+            <img src="screenshots/02_dashboard.jpg" alt="Raise Command Center Dashboard" />
           </div>
         </div>
       </div>
     </section>
 
     <!-- ================================================================== -->
-    <!-- SECTION 6: AI AGENTS & QUARTERLY EMAIL DISPATCHES -->
+    <!-- SECTION 6: SMART LISTS, UNIFIED INBOX, AI DRAFTER & DISPATCHES -->
     <!-- ================================================================== -->
     <section class="stop-section" id="stop-6" data-stop="6">
       <div class="stop-head">
         <div class="stop-head-left">
           <span class="stop-pill">SECTION 6</span>
           <span class="live-now-pill">● ACTIVE SECTION</span>
-          <h3>AI Agents (SEC 506c Guardrails) &amp; Investor Dispatches</h3>
-          <span class="owner-pill">Marc Thomas &amp; Troy Carson</span>
+          <h3>Smart Lists, Unified Inbox, AI Follow-Up Drafter &amp; Quarterly Dispatches</h3>
+          <span class="owner-pill">Marc, Troy &amp; Executive Team</span>
         </div>
-        <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/marketing/emails/templates" target="_blank">
-          Open Email Dispatches ↗
-        </a>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/contacts/smart_list/All" target="_blank">
+            Open Smart Lists ↗
+          </a>
+          <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/ai-agents/agent-studio" target="_blank">
+            Open Agent Studio ↗
+          </a>
+        </div>
       </div>
 
       <div class="coach-box">
         <div class="coach-title">Tyson's Private Coach Note (Hidden on Client Screen)</div>
-        <p>Have Marc click through the 3 buttons below: (1) <strong>AI Front Desk Assistant</strong> (remind him to click the "Agents List" tab inside Conversation AI), (2) <strong>Investor Follow-Up Drafter</strong> (under Managed Agents on the left side of Agent Studio), and (3) <strong>Marketing → Emails → Templates</strong> where Dispatches 01, 02, and 03 live.</p>
+        <p>Show Marc and Troy how their test contacts automatically segmented into the <strong>8 Smart Lists</strong> with every custom field and tag populated, how every email and AI chat message appears in <strong>Conversations</strong>, and have Marc run the 1-click copy prompt inside <strong>Agent Studio → Managed Agents (1) → Investor Follow-Up Drafter</strong>.</p>
       </div>
 
       <div class="stop-grid">
         <div class="tasks-col">
-          <div class="tasks-col-label">Walkthrough Steps</div>
+          <div class="tasks-col-label">Section 6 Walkthrough Steps</div>
 
           <div class="task-card" id="task-6-1" data-task="6-1">
             <div class="spotlight-banner">CURRENT STEP</div>
@@ -1097,10 +1298,10 @@
               <div class="task-check" onclick="toggleTask('6-1')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 6.1</div>
-                <div class="task-title">24/7 Website Chat Bot ("AI Front Desk Assistant")</div>
-                <div class="task-desc">Go to <strong>AI Agents → Conversation AI → Agents List</strong>. Configured in Auto-Pilot mode to answer public inquiries, book Management Q&amp;A calls, and enforce SEC Rule 506(c) guardrails by directing financial or return questions to the gated VDR &amp; NDA flow.</div>
+                <div class="task-title">Inspect Your Test Records Across the 8 Smart Lists (Contacts)</div>
+                <div class="task-desc">Open <strong>Contacts</strong> and click through the 8 pre-built Smart List tabs across the top bar (<em>All Investors</em>, <em>VDR Granted</em>, <em>Hot Investors</em>, <em>Hyperscalers</em>, etc.). Click on <strong>Eleanor Vance (Test Investor)</strong> to see her populated custom fields (<code>Apex Energy Capital</code>, <code>$5M–$10M</code>, <code>NDA Signed</code>, <code>VDR Granted</code>) and automated tags.</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/ai-agents/conversation-ai" target="_blank">1. Open Conversation AI ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/contacts/smart_list/All" target="_blank">Open Contacts &amp; 8 Smart Lists ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('6-1')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(6, '6-1')">🔦 Spotlight Step</button>
                 </div>
@@ -1114,10 +1315,10 @@
               <div class="task-check" onclick="toggleTask('6-2')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 6.2</div>
-                <div class="task-title">Internal Email Copilot ("Investor Follow-Up Drafter")</div>
-                <div class="task-desc">Go to <strong>AI Agents → Agent Studio → Managed Agents (1)</strong> and select <strong>Investor Follow-Up Drafter</strong>. Enter call notes and pillar interest to generate a concise post-call diligence follow-up email referencing the relevant Data Room modules.</div>
+                <div class="task-title">View the Full Communication Audit Trail in "Conversations"</div>
+                <div class="task-desc">Open <strong>Conversations</strong> in the left sidebar and click on <strong>Eleanor Vance</strong> (as well as your AI Chat test thread from Step 1.3) to review every outbound NDA email, VDR login email, and AI chat response in one unified timeline. Send a quick test email reply directly from the composer.</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-blue" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/ai-agents/agent-studio" target="_blank">2. Open Agent Studio Drafter ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/conversations" target="_blank">Open Conversations Inbox ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('6-2')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(6, '6-2')">🔦 Spotlight Step</button>
                 </div>
@@ -1131,12 +1332,44 @@
               <div class="task-check" onclick="toggleTask('6-3')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 6.3</div>
-                <div class="task-title">Quarterly Investor Dispatches (Marketing → Emails → Templates)</div>
-                <div class="task-desc">Go to <strong>Marketing → Emails → Templates</strong> to access <strong>Dispatch 01 (45Q &amp; Class VI)</strong>, <strong>Dispatch 02 (Geothermal CaaS)</strong>, and <strong>Dispatch 03 (UKCS Licence P2690)</strong>. Send or schedule campaigns via <em>Marketing → Emails → Campaigns</em>.</div>
+                <div class="task-title">Generate a Tailored Investor Follow-Up Email in Agent Studio</div>
+                <div class="task-desc">Open <strong>AI Agents → Agent Studio</strong>, click <strong>Managed Agents (1)</strong> in the left panel, and select <strong>Investor Follow-Up Drafter</strong>. Copy the test prompt below and run it to generate a compliant, personalized follow-up email for Eleanor Vance.</div>
+
+                <div class="test-data-box">
+                  <div class="test-data-header">
+                    <span>Test Prompt for Investor Follow-Up Drafter — Click to Copy</span>
+                    <span>Agent Studio</span>
+                  </div>
+                  <div class="test-data-grid">
+                    <div class="test-row">
+                      <span class="test-label">Follow-Up Prompt</span>
+                      <span class="test-val">Draft a personal follow-up email from Marc Thomas to Eleanor Vance at Apex Energy Capital ($5M–$10M indicated check size). She signed the Delaware NDA today and reviewed the Dabinett CPR (875 Bcfe) and Capital Allocation modules in the Virtual Data Room. Invite her to a 30-minute Management Q&amp;A call next Tuesday.</span>
+                      <button class="copy-chip" onclick="copyText('Draft a personal follow-up email from Marc Thomas to Eleanor Vance at Apex Energy Capital ($5M–$10M indicated check size). She signed the Delaware NDA today and reviewed the Dabinett CPR (875 Bcfe) and Capital Allocation modules in the Virtual Data Room. Invite her to a 30-minute Management Q&A call next Tuesday.', this)">Copy</button>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/marketing/emails/templates" target="_blank">3. Open Email Templates in GHL ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/ai-agents/agent-studio" target="_blank">Open Agent Studio in GHL ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('6-3')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(6, '6-3')">🔦 Spotlight Step</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-6-4" data-task="6-4">
+            <div class="spotlight-banner">CURRENT STEP</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('6-4')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Step 6.4</div>
+                <div class="task-title">Preview the 3 Pre-Built Quarterly Investor Dispatches</div>
+                <div class="task-desc">Open <strong>Marketing → Emails → Templates</strong> to preview your 3 pre-built institutional email dispatches (<em>01 — Investor Welcome &amp; Thesis Overview</em>, <em>02 — Three-Pillar Asset &amp; Engineering Update</em>, and <em>03 — Seed Round Momentum &amp; Final Allocation Notice</em>). Click <strong>Send Test Email</strong> inside the builder if you want to preview one in your inbox.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/marketing/emails/templates" target="_blank">Open Email Dispatch Templates ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('6-4')">Mark Complete ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(6, '6-4')">🔦 Spotlight Step</button>
                 </div>
               </div>
             </div>
@@ -1147,9 +1380,9 @@
         <div class="screen-col">
           <div class="screen-frame">
             <div class="screen-bar">
-              <span>GHL SCREEN REFERENCE: Marketing → Emails → Templates</span>
+              <span>GHL SCREEN REFERENCE: Contacts → 8 Smart List Tabs</span>
             </div>
-            <img src="screenshots/08_email_templates.jpg" alt="Email Templates" />
+            <img src="screenshots/04_smart_lists.jpg" alt="8 Smart Lists" />
           </div>
           <div class="screen-frame">
             <div class="screen-bar">
@@ -1157,19 +1390,25 @@
             </div>
             <img src="screenshots/12_agent_studio.jpg" alt="Agent Studio" />
           </div>
+          <div class="screen-frame">
+            <div class="screen-bar">
+              <span>GHL SCREEN REFERENCE: Marketing → Emails → Templates</span>
+            </div>
+            <img src="screenshots/08_email_templates.jpg" alt="Email Templates" />
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ================================================================== -->
-    <!-- SECTION 7: CALENDAR SYNC & MOBILE APP -->
+    <!-- SECTION 7: CLEAN UP TEST DATA, CALENDAR SYNC & MOBILE APP -->
     <!-- ================================================================== -->
     <section class="stop-section" id="stop-7" data-stop="7">
       <div class="stop-head">
         <div class="stop-head-left">
           <span class="stop-pill">SECTION 7</span>
           <span class="live-now-pill">● ACTIVE SECTION</span>
-          <h3>Personal Calendar Sync &amp; Mobile App Setup</h3>
+          <h3>Clean Up Dummy Test Records, Connect Calendar &amp; Install Mobile App</h3>
           <span class="owner-pill">All Team Members</span>
         </div>
         <a class="btn btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/settings/profile" target="_blank">
@@ -1179,12 +1418,12 @@
 
       <div class="coach-box">
         <div class="coach-title">Tyson's Private Coach Note (Hidden on Client Screen)</div>
-        <p>Wrap up the hour by having Marc, Troy, Graham, Stephen, and Jonathan complete these two final setup actions right now: (1) connect their Outlook/Google calendar under <strong>Settings → My Profile</strong> so the Management Q&amp;A calendar never double-books them, and (2) bookmark the dashboard &amp; download the <strong>LeadConnector</strong> mobile app.</p>
+        <p>Wrap up the session with three quick actions: (1) have Marc delete the dummy test contacts (<strong>Eleanor Vance</strong> and <strong>Marcus Sterling</strong>) in <strong>Contacts</strong> so the pipelines and $20M dashboard reset to $0 for live production, (2) have everyone connect their Outlook/Google Calendar under <strong>Settings → My Profile</strong>, and (3) bookmark the dashboard &amp; download the <strong>LeadConnector</strong> mobile app.</p>
       </div>
 
       <div class="stop-grid" style="grid-template-columns: 1fr;">
         <div class="tasks-col">
-          <div class="tasks-col-label">Account Setup Checklist</div>
+          <div class="tasks-col-label">Final Cleanup &amp; Account Setup Checklist</div>
 
           <div class="task-card" id="task-7-1" data-task="7-1">
             <div class="spotlight-banner">CURRENT STEP</div>
@@ -1192,10 +1431,10 @@
               <div class="task-check" onclick="toggleTask('7-1')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 7.1</div>
-                <div class="task-title">Connect Your Outlook or Google Calendar</div>
-                <div class="task-desc">In GHL, go to <strong>Settings (bottom-left) → My Profile</strong> and scroll to <strong>Calendar Settings</strong> to connect your Outlook or Google Calendar for real-time availability sync with the Management Q&amp;A booking calendar.</div>
+                <div class="task-title">Delete the Dummy Test Contacts (Resets Pipelines &amp; Dashboard to Clean Production)</div>
+                <div class="task-desc">Open <strong>Contacts</strong>, check the boxes next to <strong>Eleanor Vance (Test Investor)</strong>, <strong>Marcus Sterling (Test Partner)</strong>, and your AI chat test contact, and click the trash can icon (<strong>Delete Contacts</strong>). Deleting the test contacts automatically removes their test opportunities and resets the <strong>Raise Command Center</strong> back to $0.</div>
                 <div class="task-actions">
-                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/settings/profile" target="_blank">Open My Profile Settings in GHL ↗</a>
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/contacts/smart_list/All" target="_blank">Open Contacts to Delete Test Records ↗</a>
                   <button class="btn btn-sm btn-outline" onclick="toggleTask('7-1')">Mark Complete ✓</button>
                   <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(7, '7-1')">🔦 Spotlight Step</button>
                 </div>
@@ -1209,11 +1448,28 @@
               <div class="task-check" onclick="toggleTask('7-2')">✓</div>
               <div class="task-content">
                 <div class="task-step-label">Step 7.2</div>
+                <div class="task-title">Connect Your Outlook or Google Calendar</div>
+                <div class="task-desc">In GHL, go to <strong>Settings (bottom-left) → My Profile</strong> and scroll to <strong>Calendar Settings</strong> to connect your Outlook or Google Calendar for real-time availability sync with the Management Q&amp;A booking calendar.</div>
+                <div class="task-actions">
+                  <a class="btn btn-sm btn-ghl" href="https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/settings/profile" target="_blank">Open My Profile Settings in GHL ↗</a>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('7-2')">Mark Complete ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(7, '7-2')">🔦 Spotlight Step</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" id="task-7-3" data-task="7-3">
+            <div class="spotlight-banner">CURRENT STEP</div>
+            <div class="task-top">
+              <div class="task-check" onclick="toggleTask('7-3')">✓</div>
+              <div class="task-content">
+                <div class="task-step-label">Step 7.3</div>
                 <div class="task-title">Bookmark the Dashboard &amp; Install the "LeadConnector" Mobile App</div>
                 <div class="task-desc">Bookmark <code>https://app.gohighlevel.com/v2/location/JUqOHds1n765fzyHX6en/dashboard</code> in your browser, and download the <strong>LeadConnector</strong> mobile app (iOS / Android) to receive real-time notifications for signed NDAs, Hot Investors, and booked Q&amp;A calls.</div>
                 <div class="task-actions">
-                  <button class="btn btn-sm btn-outline" onclick="toggleTask('7-2')">Mark Complete ✓</button>
-                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(7, '7-2')">🔦 Spotlight Step</button>
+                  <button class="btn btn-sm btn-outline" onclick="toggleTask('7-3')">Mark Complete ✓</button>
+                  <button class="btn btn-sm btn-amber spotlight-btn" onclick="presenterSpotlight(7, '7-3')">🔦 Spotlight Step</button>
                 </div>
               </div>
             </div>
@@ -1238,7 +1494,19 @@
       document.body.classList.add('is-presenter');
     }
 
-    const TOTAL_TASKS = 17;
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied! ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.classList.remove('copied');
+        }, 1600);
+      });
+    }
+
+    const TOTAL_TASKS = 18;
     let localState = {
       currentStop: 1,
       activeTask: '1-1',
@@ -1376,7 +1644,7 @@
     }
 
     function presenterReset() {
-      if (confirm('Reset all checkboxes and return everyone to Stop 1?')) {
+      if (confirm('Reset all checkboxes and return everyone to Section 1?')) {
         const next = {
           currentStop: 1,
           activeTask: '1-1',
